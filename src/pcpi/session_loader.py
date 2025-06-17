@@ -2,7 +2,7 @@
 import os
 import re
 import logging
-import json
+import json5
 
 #Installed
 import requests
@@ -356,12 +356,12 @@ def load_config(file_path='', num_tenants=-1, min_tenants=-1, logger=py_logger):
     if not os.path.exists(config_path):
         config = __get_config_from_user(num_tenants, min_tenants)
         with open(config_path, 'w') as outfile:
-            json.dump(config, outfile)
+            json5.dump(config, outfile)
 
     config_data = {}
     with open(config_path, 'r') as infile:
         try:
-            config_data = json.load(infile)
+            config_data = json5.load(infile)
         except Exception as e:
             logger.error('Failed to load credentials file. Exiting...')
             logger.log(e)
