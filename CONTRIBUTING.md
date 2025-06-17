@@ -58,3 +58,9 @@ of making a fork and pull request yourself:
 Please use clear commit messages so we can understand what each commit does.
 We'll review every PR and might offer feedback or request changes before
 merging.
+
+## Local build and test
+
+- pip install build # Install the build library
+- python -m build # Build this library with your changes
+- pip install . # Install built library locally
