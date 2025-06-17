@@ -344,7 +344,11 @@ def load_config(file_path='', num_tenants=-1, min_tenants=-1, logger=py_logger):
         exit()
 
     if file_path == '':
-        config_dir = os.path.join(os.environ['HOME'], '.prismacloud')
+        env_vars = os.environ.keys()
+        if "HOME" in env_vars:
+            config_dir = os.path.join(os.environ['HOME'], '.prismacloud')
+        elif "USERPROFILE" in env_vars:
+            config_dir = os.path.join(os.environ['USERPROFILE'], '.prismacloud')
         config_path = os.path.join(config_dir, 'credentials.json')
         if not os.path.exists(config_dir):
             os.mkdir(config_dir)
